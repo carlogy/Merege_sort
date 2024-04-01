@@ -30,7 +30,7 @@ class TestMergeSort(unittest.TestCase):
         )
 
     def test_reverse_order(self):
-        reverse_large_list = list(range(100000, 0, -1))
+        reverse_large_list = list(range(1000000, 0, -1))
         self.assertListEqual(
             sorted(reverse_large_list),
             merge_sort(reverse_large_list)
@@ -43,10 +43,14 @@ class TestMergeSort(unittest.TestCase):
             merge_sort(array)
         )
 
-    def test_unsorted_multiple_indeces(self):
-         array = [29, 72, 98, 13, 87, 66, 52, 51, 36, 21, 75, 4, 88, 58, 46, 31, 55, 74, 19, 8]
-         sorted = [4, 8, 13, 19, 21, 29, 31, 36, 46, 51, 52, 55, 58, 66, 72, 74, 75, 87, 88, 98]
-         self.assertListEqual(
-             sorted,
-             merge_sort(array)
-         )
+
+    def test_large_unsorted_list(self):
+        array = list(range(0, 1000000))
+        random.shuffle(array)
+
+        self.assertListEqual(
+            sorted(array),
+            merge_sort(array)
+        )
+if __name__ == '__main__':
+    unittest.main()
